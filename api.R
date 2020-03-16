@@ -3,7 +3,7 @@ new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"
 if(length(new.packages)) install.packages(new.packages)
 lapply(list.of.packages, require, character.only=T)
 
-setwd("~/git/ke_census/data")
+setwd("~/git/ke_census_2020/data")
 
 package_url = "http://data.census.ke/api/3/action/package_list"
 package_data = fromJSON(package_url)
@@ -20,9 +20,12 @@ for(table_name in table_names){
   res_lengths = sapply(res, length)
   flat_res = data.frame(res[res_lengths==1])
   resources = data.frame(res[["resources"]])
-  resources = subset(resources, format=="CSV")
-  if(nrow(resources)==1){
-    flat_res = cbind(flat_res, resources)
+  resources_csv = subset(resources, format=="CSV")
+  resources_xlsx = subset(resources, format=="XLSX")
+  if(nrow(resources_csv)==1){
+    flat_res = cbind(flat_res, resources_csv)
+  }else if(nrow(resources_xlsx)==1){
+    flat_res = cbind(flat_res, resources_xlsx)
   }
   metadata_list[[metadata_index]] = flat_res
   metadata_index = metadata_index + 1
