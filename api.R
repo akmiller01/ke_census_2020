@@ -23,8 +23,10 @@ for(table_name in table_names){
   resources_csv = subset(resources, format=="CSV")
   resources_xlsx = subset(resources, format=="XLSX")
   if(nrow(resources_csv)==1){
+    names(resources_csv) = paste0("download_", names(resources_csv))
     flat_res = cbind(flat_res, resources_csv)
   }else if(nrow(resources_xlsx)==1){
+    names(resources_xlsx) = paste0("download_", names(resources_xlsx))
     flat_res = cbind(flat_res, resources_xlsx)
   }
   metadata_list[[metadata_index]] = flat_res
