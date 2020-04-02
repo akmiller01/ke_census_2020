@@ -1,0 +1,344 @@
+varname,occurances
+URBAN CENTRE**,1
+COUNTY,5
+Total,20
+Male,4
+Female,4
+County,9
+Total Sex,1
+Sex Male,4
+Sex Female,4
+Sex Intersex,3
+Households Conventional,1
+Households Group Quarters,1
+Land Area Sq. Km,1
+Density Persons per Sq. Km,1
+num,1
+indicator,1
+period,1
+county,1
+sub-county,1
+Age,2
+No,4
+COUNTY CODE,1
+COUNTY NAME,1
+SUB-COUNTY CODE,1
+SUB-COUNTY NAME,1
+Sub-Location,1
+Status/Reason,1
+County/ Sub-County,13
+Conventional Households,8
+Group Quarters,1
+Owned houses,1
+per cent owned,1
+Rented Houses,1
+per cent rented,1
+Not stated,2
+per cent not-stated,1
+Owned,1
+Purchased Number,1
+Purchased per cent,1
+Mode of Acquisition ConstructedNumber,1
+Mode of Acquisition ConstructedNumber per cent,1
+InheritedNumber,1
+Inherited per cent,1
+Rented/Provided,1
+Government Number,1
+Gov No per cent,1
+County Government Number,1
+CG per cent,1
+Parastatal  Number,1
+Parastatal per cent,1
+Private company Number,1
+Private Company per cent,1
+Individual Number,1
+Ind. No. per cent,1
+FBO/NGO/ Church/Temple/Mosque Number,1
+FBO/NGOper cent,1
+ConventionalHouseholds,1
+Makuti/Twigs,1
+Makuti thatch,1
+Dung/Mud,1
+Iron sheets,1
+Tins/cans,1
+Asbestos  Concrete/sheet,1
+Cement,1
+Tiles,1
+Canvas/Tents,1
+Decra/Versatile,1
+Nylon/Cartons/Cardboard,1
+Shingles,1
+Not Stated,9
+Conventional/Households,1
+Type of Wall Material (%) -Cane/Palm/Trunks,1
+Type of Wall Material (%) - Grass/Reeds,1
+Type of Wall Material (%) - Mud/Cow dung,1
+Type of Wall Material (%) - Stone with mud,1
+Type of Wall Material (%) - Covered adobe,1
+Type of Wall Material (%) - Uncovered adobe,1
+Type of Wall Material (%) - Plywood/ Cardboard,1
+Type of Wall Material (%) - Concrete/ Concrete,1
+"Iron
+ Sheets",1
+V12,1
+Type of Wall Material (%) - Off cuts/ Reused wood/Wood planks,1
+Type of Wall Material (%) - Iron sheets,1
+Type of Wall Material (%) - Concrete blocks/ Concrete precast wall,1
+Type of Wall Material (%) - Stone with lime/Cement,1
+Type of Wall Material (%) - Bricks,1
+Nylon/tents,1
+Earth/ Sand,1
+Dung,1
+"Wood
+planks/
+Shingles/
+Timber",1
+"Palm/
+Bamboo",1
+Parquet or polished wood,1
+Vinyl or asphal tstrips,1
+Ceramic tiles,1
+"Concrete/
+Cement/Terrazo",1
+"Wall to wall
+Carpet",1
+"Not
+Stated",1
+Pond(%),1
+Dam/Lake(%),1
+Stream/River,1
+Protected Spring,1
+Unprotected Spring,1
+Protected Well,1
+Unprotected  Well,1
+Borehole/ Tube well,1
+piped into  dwelling,1
+Piped to yard/ Plot,1
+Bottled water,1
+Rain/ Harvested water,1
+Water Vendor,1
+Public tap/ Standpipe,1
+Mode of Human Waste Disposal (%) Main Sewer,1
+Septic tank,1
+Pool Cess,1
+VIP Latrine,1
+Pit latrine covered,1
+Pit latrine uncovered,1
+Bucket,1
+Open/Bush,1
+Bio-septic tank/Biodigester,1
+"Main Collected by
+County
+Government",1
+"Collected by
+Community
+Association
+(CBOs Youth
+Groups Faith
+based
+organizations)",1
+"Collected by
+private company ",1
+"Dumped in the
+compound",1
+"Dumped in
+the street/
+Vacant plot/
+Drain/
+Waterways",1
+"Dumped in
+the Latrine",1
+"Burnt in
+open",1
+Buried,1
+Composit pit,1
+Burnt in pit,1
+Type of Cooking Fuel (%) - Electricity,1
+Type of Cooking Fuel (%) - Paraffin,1
+Type of Cooking Fuel (%) - Gas(LPG) ,1
+Type of Cooking Fuel (%) - Biogas,1
+Type of Cooking Fuel (%) - Firewood,1
+Type of Cooking Fuel (%) - Charcoal,1
+Type of Cooking Fuel (%) - Solar,1
+Type of Cooking Fuel (%) - Not Stated,1
+Main Electricity,1
+Pressure,1
+Paraffun Lantern,1
+Paraffin Tin,1
+Gas Lamp,1
+Wood,1
+Torch/Spotlight solar charged,1
+Torch/spot-light Dry cells,1
+Battery Charged,1
+Candle,1
+Battery(Car/Charged),1
+Generator(Diesel/Petrol),1
+Biogas,1
+Total NO,1
+At School/ Learning Institution Number,1
+At School/ Learning Institution per cent,1
+"Left School/ Learning Institution
+  After Completion Number",1
+"Left School/ Learning Institution
+  After Completion per cent",1
+"Left School/ Learning Institution
+  Before Completion Number",1
+"Left School/ Learning Institution
+  Before per cent",1
+"Never Been to School/ Learning
+  Institution Number",1
+"Never Been to School/ Learning
+  Institution per cent",1
+Dont know Number,1
+Dont know per cent,1
+Not Stated Number,1
+National/ County,2
+Sex-Male,1
+Sex-Female,1
+Intersex,1
+County/Sub County,7
+Farming,4
+Crop Production,1
+Livestock Production,1
+Aquaculture,1
+Fishing,1
+Irrigation,1
+NO,1
+Tea,1
+Coffee,1
+Avocado,1
+Citrus,1
+Mango,1
+Coconut,1
+Macadamia,1
+Cashew Nut,1
+Khat (Miraa),1
+Exotic cattle Dairy,1
+Exotic cattle  Beef,1
+Indigenous cattle,2
+Sheep,2
+Goats,2
+Camels,2
+Donkeys,2
+Pigs,2
+Indigenous Chicken,1
+Exotic Chicken Layers,2
+Exotic Chicken Broilers,2
+Beehives,2
+Rabbits,2
+Fish Ponds,2
+Fish Cages,2
+Exotic cattle-Dairy,1
+Exotic cattle Beef,1
+Indegenous Chicken,1
+Area of Agricultural land (Hectares),1
+Area of agricutural land by main purpose (Hectares) – Subsistence,1
+Area of agricutural land by main purpose (Hectares) -  Commercial,1
+Total number of Farming Households,1
+Number of farming households by main purpose of agricultural production – Subsistence,1
+Number of farming households by main purpose of agricultural production – Commercial,1
+Visual Male,1
+Visual Female,1
+Visual Total,1
+Hearing Male,1
+Hearing Female,1
+Hearing Total,1
+Mobility Male,1
+Mobility Female,1
+Mobility Total,1
+Cognition Male,1
+Cognition Female,1
+Cognition Total,1
+Self-Care Male,1
+Self-Care Female,1
+Self-care Total,1
+Communication Male,1
+Communication Female,1
+Total population male,1
+Total Population Male,1
+Total Population Female,1
+Total*,2
+Persons With Albinism Male,1
+Persons With Albinism Female,1
+HouseholdsConventional,3
+HouseholdsGroupQuarters,3
+LandAreaSq.Km,3
+DensityPersonsperSq.Km,3
+Pre-Primary,1
+Primary,1
+Secondary,1
+Middle Level/ Technical and Vocational Training (TVET),1
+University,1
+Adult Basic Education,1
+Madrasa/ Duksi,1
+Don't Know,4
+Population,1
+Number of Households,1
+Average Household size,1
+SubCounty,1
+Catholic,1
+Protestant,1
+Evangelical Churches,1
+African Instituted  Churches,1
+Orthodox,1
+Other Christian,1
+Islam,1
+Hindu,1
+Traditionists,1
+OtherReligion,1
+Atheists,1
+Dont Know,1
+Dont Stated,1
+ETHNICITY/NATIONALITY,1
+TOTAL,1
+County / Sub-County,2
+Population 3 Years and above – Total,1
+Population 3 Years and above – Male,1
+Population 3 Years and above – Female,1
+Use of Internet – Total,1
+Use of Internet – Total percent,1
+Use of Internet – Male,1
+Use of Internet – per cent of male,1
+Use of Internet – Female,1
+Use of Internet – per cent of female,1
+Use of Desktop Computer/Laptop/Tablet – Total,1
+Use of Desktop Computer/Laptop/Tablet – percent total,1
+Use of Desktop Computer/Laptop/Tablet – Male,1
+Use of Desktop Computer/Laptop/Tablet – Male percent,1
+Use of Desktop Computer/Laptop/Tablet – Female,1
+Use of Desktop Computer/Laptop/Tablet – Female per cent,1
+County /Sub-County,1
+Population Age 15 years and Above Total,1
+Population Age 15 years and AboveMale,1
+Population Age 15 years and Above Female,1
+Searched and Bought Goods/Services online Total,1
+percent total,1
+Searched and Bought Goods/Services onlineMale,1
+per cent male,1
+Searched and Bought Goods/Services onlinefemale,1
+per cent female,1
+Population Age 3years and Above,1
+Population Age 3Ownership,1
+Use of Internet,1
+Use of Desktop Computer/Tablet/ Laptop,1
+Bought goods and services online,1
+Stand alone Radio,1
+Desk Top Computer/ Laptop/ Tablet,1
+Functional Television*,1
+Analogue Television,1
+Internet,1
+Bicycle,1
+Motor Cycle,1
+Refrigerator,1
+Car,1
+Truck/ Lorry/ Bus/ Three Wheeler truck,1
+Tuk Tuk,1
+HealthFacility,1
+Health Facility,2
+Per cent Health Facility,1
+Non-HealthFacility,1
+Don'tKnow,1
+per cent,1
+Notified,2
+Not Notified,2
+Per Cent Notified,2
