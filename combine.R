@@ -58,6 +58,9 @@ d1.county = subset(d1.county,county %in% county_names)
 d1.subcounty = melt(d1.subcounty, id.vars=c("county","subcounty"))
 d1.subcounty = subset(d1.subcounty,subcounty %in% subcounty_names)
 
+d1.county$topic = "Population"
+d1.subcounty$topic = "Population"
+
 c_list[[c_index]] = d1.county
 c_index = c_index + 1
 s_list[[s_index]] = d1.subcounty
@@ -76,6 +79,8 @@ names(d2.county) = c("county","urban.pop","urban.pop.male","urban.pop.female")
 
 d2.county = melt(d2.county, id.vars=c("county"))
 d2.county = subset(d2.county,county %in% county_names)
+
+d2.county$topic = "Urban Population"
 
 c_list[[c_index]] = d2.county
 c_index = c_index + 1
@@ -121,6 +126,9 @@ setnames(d3.county, "location", "county")
 d3.subcounty = melt(d3.subcounty, id.vars="location")
 setnames(d3.subcounty, "location", "subcounty")
 d3.subcounty = merge(d3.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d3.county$topic = "Attendance Status"
+d3.subcounty$topic = "Attendance Status"
 
 c_list[[c_index]] = d3.county
 c_index = c_index + 1
@@ -171,6 +179,9 @@ d4.subcounty = melt(d4.subcounty, id.vars="location")
 setnames(d4.subcounty, "location", "subcounty")
 d4.subcounty = merge(d4.subcounty, subcounty_join, by="subcounty", all.x=T)
 
+d4.county$topic = "Education Achievement Level"
+d4.subcounty$topic = "Education Achievement Level"
+
 c_list[[c_index]] = d4.county
 c_index = c_index + 1
 s_list[[s_index]] = d4.subcounty
@@ -178,33 +189,280 @@ s_index = s_index + 1
 
 # Labour ####
 
-# Urban Population Aged 5 Years and above by Activity Status, Sex, County and Sub-County.
-# Distribution of Rural Population Aged 5 Years and above by Activity Status, Sex, County and Sub-County.
+# Urban Population Aged 5 Years and above by Activity Status, Sex, County and Sub-County. - missing?
+# Distribution of Rural Population Aged 5 Years and above by Activity Status, Sex, County and Sub-County. - missing?
 
 # WASH ####
 
 # Percentage Distribution of Conventional Households by Main Source of Drinking Water, Area of Residence, County and Sub-County.
-# Percentage Distribution of Conventional Households by Main Mode of Human Waste Disposal, Area of Residence, County and Sub-County
-# Percentage Distribution of Conventional Households by Main Mode of Solid Waste Disposal, Area of Residence, County and Sub-County
+d5 = fread(
+  "table-2-15-hholds-by-main-source-of-drinking-water-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d5) = make.names(names(d5))
+d5 = d5[c(4:nrow(d5)),]
+d5 = subset(d5, County..Sub.County %in% all_location_names)
 
+s_d5_nondup = subset(d5, County..Sub.County %in% unambiguous_subcounty_names)
+c_d5_nondup = subset(d5, County..Sub.County %in% unambiguous_county_names)
+
+d5_dup = data.table(subset(d5,County..Sub.County %in% ambiguous_locations))
+d5_dup = d5_dup[order(d5_dup$County..Sub.County,d5_dup$Conventional.Households),]
+d5_dup$type = rep(c("subcounty","county"),nrow(d5_dup)/2)
+s_d5_dup = subset(d5_dup,type=="subcounty")
+s_d5_dup$type = NULL
+c_d5_dup = subset(d5_dup,type=="county")
+c_d5_dup$type = NULL
+
+d5.county = rbind(c_d5_dup, c_d5_nondup)
+d5.subcounty = rbind(s_d5_dup, s_d5_nondup)
+
+d5.county = melt(d5.county, id.vars="County..Sub.County")
+setnames(d5.county, "County..Sub.County", "county")
+d5.subcounty = melt(d5.subcounty, id.vars="County..Sub.County")
+setnames(d5.subcounty, "County..Sub.County", "subcounty")
+d5.subcounty = merge(d5.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d5.county$topic = "Drinking Water"
+d5.subcounty$topic = "Drinking Water"
+
+c_list[[c_index]] = d5.county
+c_index = c_index + 1
+s_list[[s_index]] = d5.subcounty
+s_index = s_index + 1
+
+# Percentage Distribution of Conventional Households by Main Mode of Human Waste Disposal, Area of Residence, County and Sub-County
+d6 = fread(
+  "table-2-16-households-by-main-mode-of-human-waste-disposal-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d6) = make.names(names(d6))
+d6 = d6[c(4:nrow(d6)),]
+d6 = subset(d6, County..Sub.County %in% all_location_names)
+
+s_d6_nondup = subset(d6, County..Sub.County %in% unambiguous_subcounty_names)
+c_d6_nondup = subset(d6, County..Sub.County %in% unambiguous_county_names)
+
+d6_dup = data.table(subset(d6,County..Sub.County %in% ambiguous_locations))
+d6_dup = d6_dup[order(d6_dup$County..Sub.County,d6_dup$Conventional.Households),]
+d6_dup$type = rep(c("subcounty","county"),nrow(d6_dup)/2)
+s_d6_dup = subset(d6_dup,type=="subcounty")
+s_d6_dup$type = NULL
+c_d6_dup = subset(d6_dup,type=="county")
+c_d6_dup$type = NULL
+
+d6.county = rbind(c_d6_dup, c_d6_nondup)
+d6.subcounty = rbind(s_d6_dup, s_d6_nondup)
+
+d6.county = melt(d6.county, id.vars="County..Sub.County")
+setnames(d6.county, "County..Sub.County", "county")
+d6.subcounty = melt(d6.subcounty, id.vars="County..Sub.County")
+setnames(d6.subcounty, "County..Sub.County", "subcounty")
+d6.subcounty = merge(d6.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d6.county$topic = "Human Waste Disposal"
+d6.subcounty$topic = "Human Waste Disposal"
+
+c_list[[c_index]] = d6.county
+c_index = c_index + 1
+s_list[[s_index]] = d6.subcounty
+s_index = s_index + 1
+
+# Percentage Distribution of Conventional Households by Main Mode of Solid Waste Disposal, Area of Residence, County and Sub-County
+d7 = fread(
+  "table-2-17-hholds-by-main-mode-of-solid-waste-disposal-area-of-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d7) = make.names(names(d7))
+d7 = d7[c(4:nrow(d7)),]
+d7 = subset(d7, County..Sub.County %in% all_location_names)
+
+s_d7_nondup = subset(d7, County..Sub.County %in% unambiguous_subcounty_names)
+c_d7_nondup = subset(d7, County..Sub.County %in% unambiguous_county_names)
+
+d7_dup = data.table(subset(d7,County..Sub.County %in% ambiguous_locations))
+d7_dup = d7_dup[order(d7_dup$County..Sub.County,d7_dup$Conventional.Households),]
+d7_dup$type = rep(c("subcounty","county"),nrow(d7_dup)/2)
+s_d7_dup = subset(d7_dup,type=="subcounty")
+s_d7_dup$type = NULL
+c_d7_dup = subset(d7_dup,type=="county")
+c_d7_dup$type = NULL
+
+d7.county = rbind(c_d7_dup, c_d7_nondup)
+d7.subcounty = rbind(s_d7_dup, s_d7_nondup)
+
+d7.county = melt(d7.county, id.vars="County..Sub.County")
+setnames(d7.county, "County..Sub.County", "county")
+d7.subcounty = melt(d7.subcounty, id.vars="County..Sub.County")
+setnames(d7.subcounty, "County..Sub.County", "subcounty")
+d7.subcounty = merge(d7.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d7.county$topic = "Solid Waste Disposal"
+d7.subcounty$topic = "Solid Waste Disposal"
+
+c_list[[c_index]] = d7.county
+c_index = c_index + 1
+s_list[[s_index]] = d7.subcounty
+s_index = s_index + 1
 # Energy ####
 
 # Main Type of Cooking Fuel, Area of Residence, County and Sub-County
+d8 = fread(
+  "table-2-18-hholds-by-main-type-of-cooking-fuel-area-of-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d8) = make.names(names(d8))
+d8 = d8[c(4:nrow(d8)),]
+d8 = subset(d8, County..Sub.County %in% all_location_names)
+
+s_d8_nondup = subset(d8, County..Sub.County %in% unambiguous_subcounty_names)
+c_d8_nondup = subset(d8, County..Sub.County %in% unambiguous_county_names)
+
+d8_dup = data.table(subset(d8,County..Sub.County %in% ambiguous_locations))
+d8_dup = d8_dup[order(d8_dup$County..Sub.County,d8_dup$Conventional.Households),]
+d8_dup$type = rep(c("subcounty","county"),nrow(d8_dup)/2)
+s_d8_dup = subset(d8_dup,type=="subcounty")
+s_d8_dup$type = NULL
+c_d8_dup = subset(d8_dup,type=="county")
+c_d8_dup$type = NULL
+
+d8.county = rbind(c_d8_dup, c_d8_nondup)
+d8.subcounty = rbind(s_d8_dup, s_d8_nondup)
+
+d8.county = melt(d8.county, id.vars="County..Sub.County")
+setnames(d8.county, "County..Sub.County", "county")
+d8.subcounty = melt(d8.subcounty, id.vars="County..Sub.County")
+setnames(d8.subcounty, "County..Sub.County", "subcounty")
+d8.subcounty = merge(d8.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d8.county$topic = "Cooking Fuel"
+d8.subcounty$topic = "Cooking Fuel"
+
+c_list[[c_index]] = d8.county
+c_index = c_index + 1
+s_list[[s_index]] = d8.subcounty
+s_index = s_index + 1
+
 # Main Type of Lighting Fuel, Area of Residence, County and Sub-County.
+d9 = fread(
+  "table-2-19-households-by-main-type-of-lighting-fuel-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d9) = make.names(names(d9))
+d9 = d9[c(4:nrow(d9)),]
+d9 = subset(d9, County..Sub.County %in% all_location_names)
+
+s_d9_nondup = subset(d9, County..Sub.County %in% unambiguous_subcounty_names)
+c_d9_nondup = subset(d9, County..Sub.County %in% unambiguous_county_names)
+
+d9_dup = data.table(subset(d9,County..Sub.County %in% ambiguous_locations))
+d9_dup = d9_dup[order(d9_dup$County..Sub.County,d9_dup$Conventional.Households),]
+d9_dup$type = rep(c("subcounty","county"),nrow(d9_dup)/2)
+s_d9_dup = subset(d9_dup,type=="subcounty")
+s_d9_dup$type = NULL
+c_d9_dup = subset(d9_dup,type=="county")
+c_d9_dup$type = NULL
+
+d9.county = rbind(c_d9_dup, c_d9_nondup)
+d9.subcounty = rbind(s_d9_dup, s_d9_nondup)
+
+d9.county = melt(d9.county, id.vars="County..Sub.County")
+setnames(d9.county, "County..Sub.County", "county")
+d9.subcounty = melt(d9.subcounty, id.vars="County..Sub.County")
+setnames(d9.subcounty, "County..Sub.County", "subcounty")
+d9.subcounty = merge(d9.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d9.county$topic = "Lighting Fuel"
+d9.subcounty$topic = "Lighting Fuel"
+
+c_list[[c_index]] = d9.county
+c_index = c_index + 1
+s_list[[s_index]] = d9.subcounty
+s_index = s_index + 1
 
 # Disability ####
 
-# Distribution of Population aged 5 years and above by Disability Status, Sex1, Area of Residence, County and Sub-County
+# Distribution of Population aged 5 years and above by Disability Status, Sex1, Area of Residence, County and Sub-County - missing?
 # Distribution of Persons with Disability by Type of Disability, Sex1, Area of Residence, County and Sub County
-# Distribution of Persons with Albinism by Sex1, Area of Residence, County and Sub County
+d10 = fread(
+  "table-2-27-people-with-disability-by-type-of-disability-sex-area-of-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d10) = make.names(names(d10))
+d10 = d10[c(4:nrow(d10)),]
+d10 = subset(d10, County.Sub.County %in% all_location_names)
 
+s_d10_nondup = subset(d10, County.Sub.County %in% unambiguous_subcounty_names)
+c_d10_nondup = subset(d10, County.Sub.County %in% unambiguous_county_names)
+
+d10_dup = data.table(subset(d10,County.Sub.County %in% ambiguous_locations))
+d10_dup = d10_dup[order(d10_dup$County.Sub.County,d10_dup$Total),]
+d10_dup$type = rep(c("subcounty","county"),nrow(d10_dup)/2)
+s_d10_dup = subset(d10_dup,type=="subcounty")
+s_d10_dup$type = NULL
+c_d10_dup = subset(d10_dup,type=="county")
+c_d10_dup$type = NULL
+
+d10.county = rbind(c_d10_dup, c_d10_nondup)
+d10.subcounty = rbind(s_d10_dup, s_d10_nondup)
+
+d10.county = melt(d10.county, id.vars="County.Sub.County")
+setnames(d10.county, "County.Sub.County", "county")
+d10.subcounty = melt(d10.subcounty, id.vars="County.Sub.County")
+setnames(d10.subcounty, "County.Sub.County", "subcounty")
+d10.subcounty = merge(d10.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d10.county$topic = "Disability Type"
+d10.subcounty$topic = "Disability Type"
+
+c_list[[c_index]] = d10.county
+c_index = c_index + 1
+s_list[[s_index]] = d10.subcounty
+s_index = s_index + 1
+
+# Distribution of Persons with Albinism by Sex1, Area of Residence, County and Sub County
+d11 = fread(
+  "table-2-28-persons-with-albinism-by-sex-area-of-residence-county-and-sub-county.csv",
+  na.strings=all_na_strings
+)
+names(d11) = make.names(names(d11))
+d11 = d11[c(4:nrow(d11)),]
+d11 = subset(d11, County.Sub.County %in% all_location_names)
+
+s_d11_nondup = subset(d11, County.Sub.County %in% unambiguous_subcounty_names)
+c_d11_nondup = subset(d11, County.Sub.County %in% unambiguous_county_names)
+
+d11_dup = data.table(subset(d11,County.Sub.County %in% ambiguous_locations))
+d11_dup = d11_dup[order(d11_dup$County.Sub.County,d11_dup$Total.population.male),]
+d11_dup$type = rep(c("subcounty","county"),nrow(d11_dup)/2)
+s_d11_dup = subset(d11_dup,type=="subcounty")
+s_d11_dup$type = NULL
+c_d11_dup = subset(d11_dup,type=="county")
+c_d11_dup$type = NULL
+
+d11.county = rbind(c_d11_dup, c_d11_nondup)
+d11.subcounty = rbind(s_d11_dup, s_d11_nondup)
+
+d11.county = melt(d11.county, id.vars="County.Sub.County")
+setnames(d11.county, "County.Sub.County", "county")
+d11.subcounty = melt(d11.subcounty, id.vars="County.Sub.County")
+setnames(d11.subcounty, "County.Sub.County", "subcounty")
+d11.subcounty = merge(d11.subcounty, subcounty_join, by="subcounty", all.x=T)
+
+d11.county$topic = "Albinism"
+d11.subcounty$topic = "Albinism"
+
+c_list[[c_index]] = d11.county
+c_index = c_index + 1
+s_list[[s_index]] = d11.subcounty
+s_index = s_index + 1
 
 dat_county = rbindlist(c_list)
-dat_county = dcast(dat_county, county~variable)
+dat_county = dcast(dat_county, county+topic~variable)
 length(unique(dat_county$county)[order(unique(dat_county$county))]) # 47
 
 dat_subcounty = rbindlist(s_list, use.names=T)
-dat_subcounty = dcast(dat_subcounty, county+subcounty~variable)
+dat_subcounty = dcast(dat_subcounty, county+subcounty+topic~variable)
 length(unique(dat_subcounty$subcounty)[order(unique(dat_subcounty$subcounty))]) # 334
 
 fwrite(dat_county,"ke_2020_county.csv")
