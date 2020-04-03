@@ -111,7 +111,7 @@ s_d3_nondup = subset(d3, location %in% unambiguous_subcounty_names)
 c_d3_nondup = subset(d3, location %in% unambiguous_county_names)
 
 d3_dup = data.table(subset(d3,location %in% ambiguous_locations))
-d3_dup = d3_dup[order(d3_dup$location,d3_dup$At.School..Learning.Institution.Number.female),]
+d3_dup = d3_dup[order(d3_dup$location,d3_dup$Total.NO.total),]
 d3_dup$type = rep(c("subcounty","county"),nrow(d3_dup)/2)
 s_d3_dup = subset(d3_dup,type=="subcounty")
 s_d3_dup$type = NULL
@@ -458,11 +458,11 @@ s_list[[s_index]] = d11.subcounty
 s_index = s_index + 1
 
 dat_county = rbindlist(c_list)
-dat_county = dcast(dat_county, county+topic~variable)
+dat_county = dcast(dat_county, county~variable+topic)
 length(unique(dat_county$county)[order(unique(dat_county$county))]) # 47
 
 dat_subcounty = rbindlist(s_list, use.names=T)
-dat_subcounty = dcast(dat_subcounty, county+subcounty+topic~variable)
+dat_subcounty = dcast(dat_subcounty, county+subcounty~variable+topic)
 length(unique(dat_subcounty$subcounty)[order(unique(dat_subcounty$subcounty))]) # 334
 
 fwrite(dat_county,"ke_2020_county.csv")
